@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 # the script for shell
 hour=0
-while [ $hour -1e 12 ]
-do 
-  echo "Hour: $hour"
-  minute=1
-  while [ $minute -1e 59 ]
-  do
-    echo "$minute"
-    (( minute++ ))
-  done
-  (( hour++ ))
+minute=1
+
+while [[ $hour -lt 12 || ($hour -eq 12 && $minute -le 59) ]]
+do
+    printf "%02d:%02d\n" $hour $minute
+
+    if [[ $minute -eq 59 ]]
+    then
+        hour=$((hour + 1))
+        minute=0
+    else
+        minute=$((minute + 1))
+    fi
 done
