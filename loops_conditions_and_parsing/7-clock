@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 # the scrix
 
-hour=0
-while [ $hour -le 12 ]; do
-    echo "Hour: $hour"
+count=0
+while [ $count -lt 70 ]; do
+    hour=$((count / 60))
+    minute=$((count % 60))
+
     if [ $hour -eq 0 ]; then
-        minute=1
-    else
-        minute=0
+        echo "Hour: $hour"
     fi
-    while [ $minute -le 59 ]; do
-        if [ $minute -lt 10 ]; then
-            echo "0$minute"
-        else
-            echo $minute
-        fi
-        ((minute++))
-    done
-    ((hour++))
+
+    if [ $minute -eq 0 ]; then
+        echo $hour
+    else
+        echo $minute
+    fi
+
+    ((count++))
 done | head -n 70
