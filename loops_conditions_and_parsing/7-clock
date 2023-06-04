@@ -1,17 +1,10 @@
 #!/usr/bin/env bash
 # script for shel
-hour=0
-minute=1
-
-while (( hour < 12 )) || (( hour == 12 && minute < 60 ))
+for (( hour = 0; hour <= 23; hour++ ))
 do
-    printf "%02d:%02d\n" "$hour" "$minute"
-
-    if (( minute == 59 ))
-    then
-        hour=$(( hour + 1 ))
-        minute=0
-    else
-        minute=$(( minute + 1 ))
-    fi
+    echo "Hour: $hour"
+    for (( minute = 0; minute <= 59; minute++ ))
+    do
+        echo "$minute"
+    done
 done
