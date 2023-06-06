@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# the comment for script writing
-awk '{ count[$1" "$9]++ } END { for (ip_code in count) printf "%6d %s\n", count[ip_code], ip_code }' 14-dig_the-data | sort -rn
+# Dig the data
+
+awk '{print $1,$9}' apache-access.log | sort | uniq -c | sort -r
