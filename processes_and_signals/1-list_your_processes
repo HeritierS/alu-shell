@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 # list all my pid
-echo "==== List of Currently Running Processes ===="
-echo ""
+#!/bin/bash
+
+echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
+echo "------------------------------------------------------------------------"
 
 # Get the process information using ps command
-processes=$(ps -eo pid,ppid,user,tty,stat,time,command --forest)
+processes=$(ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest)
 
 # Display the process hierarchy with indentation
-echo "$processes" | awk 'BEGIN{ OFS="\t" } { print $1, $2, $3, $4, $5, $6, $7 }' | awk 'BEGIN{ OFS="\t" } { for (i=1; i<NF-1; i++) { printf("|   ") } print "|--", $NF }'
-echo ""
+echo "$processes" | awk 'BEGIN{ OFS="\t" } { for (i=1; i<NF-1; i++) { printf("|   ") } print "|--", $NF }'
 
-# Display process hierarchy
-echo "==== Process Hierarchy ===="
-echo ""
-pstree -p
 
