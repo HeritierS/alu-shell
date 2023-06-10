@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # the kill bash script
 # Store the current process 
-kill 19423
+kill 19395
