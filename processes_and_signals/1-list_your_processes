@@ -4,7 +4,7 @@ echo "==== List of Currently Running Processes ===="
 echo ""
 
 # Get the process information using ps command
-processes=$(ps axo pid,ppid,user,command)
+processes=$(ps -e -o pid,ppid,user,command --no-headers)
 
 # Format and display the process information
 echo "PID   PPID  USER        COMMAND"
