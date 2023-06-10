@@ -10,4 +10,3 @@ for pid_dir in /proc/[0-9]*/; do
         fi
     fi
 done
-
