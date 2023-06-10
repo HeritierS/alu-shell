@@ -1,22 +1,4 @@
 #!/usr/bin/env bash
 # the kill bash script
-#!/bin/bash
-
-# Store the current process ID
-PID=$$
-
-# Function to handle the termination signal
-cleanup() {
-    echo "Stopping the script..."
-    exit 0
-}
-
-# Register the cleanup function to handle termination signals
-trap cleanup SIGINT SIGTERM
-
-# Loop indefinitely
-while true; do
-    echo "To infinity and beyond"
-    sleep 2
-done
-
+# Store the current process 
+kill 19423
