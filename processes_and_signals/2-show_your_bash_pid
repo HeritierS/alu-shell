@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 # list the stated pid
 # shellcheck disable=SC2009
-# Get the process information using ps command
-processes=$(ps -e -o pid,command --no-headers)
+ps -ef | grep -w bash | grep -v grep
 
-# Search for the line containing the given PID
-filtered_processes=$(echo "$processes" | awk -v pid=4404 '$1 == pid')
-
-# Display the filtered process
-echo "Process with PID 4404 (Bash):"
-echo "PID   COMMAND"
-echo "------------------"
-echo "$filtered_processes"
