@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
 # list all my pid
-echo "==== List of Currently Running Processes ===="
-echo ""
-
 # Get the process information using ps command
-processes=$(ps -e -o pid,ppid,user,command --no-headers)
+processes=$(ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --sort=-%cpu)
 
-# Format and display the process information
-echo "PID   PPID  USER        COMMAND"
-echo "---------------------------------------------"
-echo "$processes" | awk 'BEGIN{ OFS="\t" } { print $1, $2, $3, $4 }'
-echo ""
+# Search for lines containing the word "bash"
+filtered_processes=$(echo "$processes" | grep bash)
 
-# Display process hierarchy
-echo "==== Process Hierarchy ===="
-echo ""
-pstree -p
+# Display the filtered processes
+echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
+echo "------------------------------------------------------------------------"
+echo "$filtered_processes"
