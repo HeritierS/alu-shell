@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 # list all my pid
-echo "---- List of Running Processes ----"
-ps auxf
-echo "-----------------------------------"
+echo "==== List of Currently Running Processes ===="
+echo ""
+
+# Get the process information using ps command
+processes=$(ps axo pid,ppid,user,command)
+
+# Format and display the process information
+echo "PID   PPID  USER        COMMAND"
+echo "---------------------------------------------"
+echo "$processes" | awk 'BEGIN{ OFS="\t" } { print $1, $2, $3, $4 }'
+echo ""
+
+# Display process hierarchy
+echo "==== Process Hierarchy ===="
+echo ""
+pstree -p
