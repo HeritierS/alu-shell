@@ -9,4 +9,3 @@ processes=$(ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tty,stat,start,time,command -
 # Display the process hierarchy with indentation
 echo "$processes" | awk 'BEGIN{ OFS="\t" } { for (i=1; i<NF-1; i++) { printf("|   ") } print "|--", $0 }'
 
-
