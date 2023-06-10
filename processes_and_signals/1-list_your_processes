@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# list all my pid
+echo "---- List of Running Processes ----"
+ps auxf
+echo "-----------------------------------"
